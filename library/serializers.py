@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Book, CustomUser, Tracking
+from .models import Book, Tracking, Note
 
 
 class BookSerializer(serializers.ModelSerializer):
@@ -17,8 +17,9 @@ class TrackingSerializer(serializers.ModelSerializer):
         fields = ('status', 'user', 'book')
 
 
-class CustomUserSerializer(serializers.ModelSerializer):
-   
+class NoteSerializer(serializers.ModelSerializer):
+
     class Meta:
-        model = CustomUser
-        fields = ('id', 'username')
+        model = Note
+        fields = ('user', 'book', 'date_created',
+                  'notes', 'privacy', 'page_number')

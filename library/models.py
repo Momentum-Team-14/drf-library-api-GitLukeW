@@ -41,9 +41,9 @@ class Tracking(models.Model):
     status = models.CharField(
         max_length=2, choices=STATUS_CHOICES, default=UNREAD)
     user = models.ForeignKey(
-        CustomUser, on_delete=models.CASCADE, related_name='tracking_users')
+        CustomUser, on_delete=models.CASCADE, related_name='tracking')
     book = models.ForeignKey(
-        Book, on_delete=models.CASCADE, related_name='tracking_books')
+        Book, on_delete=models.CASCADE, related_name='tracking')
 
     def __str__(self):
         return f'{self.status}'
@@ -51,13 +51,13 @@ class Tracking(models.Model):
 
 class Note(models.Model):
     user = models.ForeignKey(
-        CustomUser, on_delete=models.CASCADE, related_name='note_users')
+        CustomUser, on_delete=models.CASCADE, related_name='notes')
     book = models.ForeignKey(
-        Book, on_delete=models.CASCADE, related_name='note_books')
+        Book, on_delete=models.CASCADE, related_name='notes')
     date_created = models.DateTimeField(auto_now_add=True)
     notes = models.TextField(max_length=250)
     privacy = models.BooleanField(default=True)
-    page_number = models.IntegerField(null=True)
+    page_number = models.IntegerField(null=True, blank=True)
 
     def __str__(self):
-        return f'{self.notes}'
+        return f'{self.book}'

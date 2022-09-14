@@ -6,9 +6,9 @@ urlpatterns = [
     path('library/', views.BookList.as_view(), name='library-list'),
     path('library/<int:pk>/', views.BookDetail.as_view(), name='library-detail'),
     path('tracking/', views.TrackingList.as_view(), name='tracking-list'),
-    path('<int:pk>/tracking/', views.TrackingDetail.as_view(), name='tracking-detail'),
-    path('users/', views.UserList.as_view(), name='user-list'),
-    path('users/<int:pk>/', views.UserDetail.as_view(), name='user-detail'),
+    path('tracking/<int:pk>/', views.TrackingDetail.as_view(), name='tracking-detail'),
+     path('notes/', views.NoteList.as_view(), name='notes-list'),
+    path('notes/<int:pk>/', views.NoteDetail.as_view(), name='notes-detail'),
     path('', views.api_root),
 ]
 
