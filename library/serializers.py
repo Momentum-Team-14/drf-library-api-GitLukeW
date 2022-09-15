@@ -22,6 +22,7 @@ class TrackingSerializer(serializers.ModelSerializer):
 
 
 class NoteSerializer(serializers.ModelSerializer):
+    owner = serializers.ReadOnlyField(source='owner.username')
     user = serializers.SlugRelatedField(
          slug_field="username", read_only=True)
     book = serializers.SlugRelatedField(
@@ -30,4 +31,4 @@ class NoteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Note
         fields = ('user', 'book', 'date_created',
-                  'notes', 'privacy', 'page_number')
+                  'notes', 'privacy', 'page_number', 'owner')
