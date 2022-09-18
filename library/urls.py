@@ -7,7 +7,7 @@ urlpatterns = [
     path('library/<int:pk>/', views.BookDetail.as_view(), name='library-detail'),
     path('tracking/', views.TrackingList.as_view(), name='tracking-list'),
     path('tracking/<int:pk>/', views.TrackingDetail.as_view(), name='tracking-detail'),
-     path('notes/', views.NoteList.as_view(), name='notes-list'),
+    path('notes/', views.NoteList.as_view(), name='notes-list'),
     path('notes/<int:pk>/', views.NoteDetail.as_view(), name='notes-detail'),
     path('', views.api_root),
 ]

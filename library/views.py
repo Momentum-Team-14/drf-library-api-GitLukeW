@@ -25,17 +25,23 @@ class TrackingList(generics.ListCreateAPIView):
     queryset = Tracking.objects.all()
     serializer_class = TrackingSerializer
 
+    def get_queryset(self):
+        queryset = Tracking.objects.filter(user=self.request.user)
+        return queryset
+
 
 class TrackingDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Tracking.objects.all()
     serializer_class = TrackingSerializer
 
+
 class NoteList(generics.ListCreateAPIView):
     queryset = Note.objects.all()
     serializer_class = NoteSerializer
 
-    def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
+    def get_queryset(self):
+        queryset = Note.objects.filter(user=self.request.user)
+        return queryset
 
 
 class NoteDetail(generics.RetrieveUpdateDestroyAPIView):
