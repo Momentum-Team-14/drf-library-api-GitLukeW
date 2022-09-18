@@ -1,5 +1,5 @@
 from pickle import GET
-from django.shortcuts import render
+from django.shortcuts import redirect
 from rest_framework import generics
 from .models import Book, Tracking, Note
 from .serializers import BookSerializer, TrackingSerializer, NoteSerializer
@@ -13,9 +13,9 @@ class BookList(generics.ListCreateAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
     filter_backends = [filters.SearchFilter, filters.OrderingFilter]
-    ordering_fields = ['title','author', 'genre', 'publication_date']
+    ordering_fields = ['title', 'author', 'genre', 'publication_date']
+    ording = ['title']
     search_fields = ['author', 'title']
-
 
 
 class BookDetail(generics.RetrieveUpdateDestroyAPIView):
